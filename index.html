@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Cards</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>flash cards</h1>
+        <h4>한국어 - english</h4>
+    </header>
+
+    <main>
+        <section id="study-view">
+        <div id="card" class="word-card">
+            <p id="word-display"></p>
+
+        </div>
+
+        <input type="text" id="answer-input" placeholder="enter translation">
+
+        <div id="actions" class="btn-flex">
+            <button id="check-btn" class="btn-style btn-check">check</button>
+            <button id="idk-btn" class="btn-style">not sure</button>
+        </div>
+
+        <p id="feedback"></p>
+
+        <nav class="btn-flex">
+            <button id="add-view-btn" class="btn-style">add card</button>
+            <button id="deck-view-btn" class="btn-style">all cards</button>
+        </nav> 
+</section>
+
+        <section id="add-view">
+            <input type="text" id="ko-input" placeholder="한국어">
+            <input type="text" id="en-input" placeholder="English">
+            <button id="done-btn" class="btn-style">done</button>
+        </section>
+
+        <section id="deck-view" class="btn-flex">
+            <ul id="card-list"></ul>
+            <button id="back-btn" class="btn-style">back</button>
+        </section>
+    </main>
+
+    <script type="module" src="js/script.js"></script>
+</body>
+
+</html>
