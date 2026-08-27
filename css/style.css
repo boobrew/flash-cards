@@ -85,6 +85,7 @@ input {
     border: none;
     padding: 0.5rem;
     background-color: rgb(227, 224, 220);
+    font-size: 1rem;
 }
 
 .btn-check{
