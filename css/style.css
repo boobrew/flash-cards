@@ -12,6 +12,10 @@ body {
     color: rgb(255, 254, 248);
 }
 
+button {
+  touch-action: manipulation;
+}
+
 header {
     text-align: center;
     padding-top: 0.5rem;
