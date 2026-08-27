@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAAFRcM9DUnLP9-XLOkKN_uIyKPYFRt29g",
@@ -43,7 +44,10 @@ let currentDirection = "";
 
 async function loadCards() {
   const querySnapshot = await getDocs(cardsCollection);
-  cards = querySnapshot.docs.map(doc => doc.data());
+  cards = querySnapshot.docs.map(docSnap => ({
+    id: docSnap.id,
+    ...docSnap.data()
+  }));
   showRandomCard();
 }
 
@@ -134,8 +138,20 @@ function renderDeck() {
   cards.forEach(function(card) {
     const li = document.createElement('li');
     li.textContent = card.ko + " — " + card.en;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = "löschen";
+    deleteBtn.addEventListener('click', () => deleteCard(card.id));
+
+    li.appendChild(deleteBtn);
     cardList.appendChild(li);
   });
+}
+
+async function deleteCard(cardId) {
+  await deleteDoc(doc(db, "cards", cardId));
+  cards = cards.filter(card => card.id !== cardId);
+  renderDeck();
 }
 
 deckViewBtn.addEventListener('click', () => {
