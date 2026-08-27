@@ -115,6 +115,11 @@ input {
     margin: 2rem auto 0 auto;
 }
 
+#add-back-btn{
+    display: block;
+    margin: 1.5rem auto 0 auto;
+}
+
 .word-card.correct {
   background-color: #b7e4c7;
   transition: background-color 0.2s;
