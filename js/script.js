@@ -62,8 +62,10 @@ function showRandomCard() {
 
   if (currentDirection === "ko-en") {
     wordDisplay.textContent = currentCard.ko;
+    answerInput.setAttribute('lang', 'en');  // Antwort ist Englisch
   } else {
     wordDisplay.textContent = currentCard.en;
+    answerInput.setAttribute('lang', 'ko');  // Antwort ist Koreanisch
   }
 
   answerInput.value = "";
