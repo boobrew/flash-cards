@@ -54,12 +54,13 @@ main{
     background-color: rgb(227, 224, 220);
     color: rgb(18, 18, 18);
     border-radius: 0.5rem;
-    width: 120px;
-    height: 25px;
+    width: 80%;
+    height: 2rem;
     text-align: center;
     border: none;
     font-family: var(--font-fam);
     font-weight: 500;
+    font-size: 1rem;
 }
 
 .btn-flex {
@@ -121,5 +122,5 @@ input {
 }
 
 .word-card.revealed {
-  background-color: #e7efff;
+  background-color: #b2b5fb;
 }
