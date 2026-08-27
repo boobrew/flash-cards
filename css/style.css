@@ -93,7 +93,7 @@ input {
 
 #done-btn{
     display: block;
-    margin: auto;
+    margin: 1rem auto;
 }
 
 #add-view,
@@ -117,7 +117,7 @@ input {
 
 #add-back-btn{
     display: block;
-    margin: 1.5rem auto 0 auto;
+    margin: 0 auto;
 }
 
 .word-card.correct {
