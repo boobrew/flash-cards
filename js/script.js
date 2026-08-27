@@ -139,7 +139,7 @@ function renderDeck() {
     li.textContent = card.ko + " — " + card.en;
 
     const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = "löschen";
+    deleteBtn.textContent = "x";
     deleteBtn.addEventListener('click', () => deleteCard(card.id));
 
     li.appendChild(deleteBtn);
