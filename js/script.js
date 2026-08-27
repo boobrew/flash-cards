@@ -32,6 +32,7 @@ const deckView = document.getElementById('deck-view');
 const koInput = document.getElementById('ko-input');
 const enInput = document.getElementById('en-input');
 const doneBtn = document.getElementById('done-btn');
+const addBackBtn = document.getElementById('add-back-btn');
 
 const cardList = document.getElementById('card-list');
 
@@ -141,6 +142,7 @@ deckViewBtn.addEventListener('click', () => {
 });
 
 doneBtn.addEventListener('click', addNewCard);
+addBackBtn.addEventListener('click', () => showView(studyView));
 
 addViewBtn.addEventListener('click', () => showView(addView));
 backBtn.addEventListener('click', () => showView(studyView));
