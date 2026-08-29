@@ -33,6 +33,7 @@ const koInput = document.getElementById('ko-input');
 const enInput = document.getElementById('en-input');
 const doneBtn = document.getElementById('done-btn');
 const addBackBtn = document.getElementById('add-back-btn');
+addMsg = document.getElementById('add-msg');
 
 const cardList = document.getElementById('card-list');
 
