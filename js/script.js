@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAAFRcM9DUnLP9-XLOkKN_uIyKPYFRt29g",
@@ -127,8 +127,16 @@ async function addNewCard() {
   koInput.value = "";
   enInput.value = "";
 
-  showView(studyView);
+
   showRandomCard();
+  addMsg.textContent = `"${koValue}" word added ✓`;
+setTimeout(() => { addMsg.textContent = ""; }, 1500);
+
+
+async function deleteCard(cardId) {
+  await deleteDoc(doc(db, "cards", cardId));
+  cards = cards.filter(card => card.id !== cardId);
+  renderDeck();
 }
 
 function renderDeck() {
@@ -136,22 +144,39 @@ function renderDeck() {
 
   cards.forEach(function(card) {
     const li = document.createElement('li');
-    li.textContent = card.ko + " — " + card.en;
+
+    const text = document.createElement('span');
+    text.textContent = card.ko + " — " + card.en;
+
+    const editBtn = document.createElement('button');
+    editBtn.textContent = "✎";
+    editBtn.addEventListener('click', () => editCard(card));
 
     const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = "x";
+    deleteBtn.textContent = "✕";
     deleteBtn.addEventListener('click', () => deleteCard(card.id));
 
+    li.appendChild(text);
+    li.appendChild(editBtn);
     li.appendChild(deleteBtn);
     cardList.appendChild(li);
   });
 }
 
-async function deleteCard(cardId) {
-  await deleteDoc(doc(db, "cards", cardId));
-  cards = cards.filter(card => card.id !== cardId);
+async function editCard(card) {
+  const newKo = prompt("Koreanisch:", card.ko);
+  if (newKo === null) return; // abgebrochen
+
+  const newEn = prompt("Englisch:", card.en);
+  if (newEn === null) return;
+
+  await updateDoc(doc(db, "cards", card.id), { ko: newKo.trim(), en: newEn.trim() });
+
+  card.ko = newKo.trim();
+  card.en = newEn.trim();
   renderDeck();
 }
+
 
 deckViewBtn.addEventListener('click', () => {
   showView(deckView);
