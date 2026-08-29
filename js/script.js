@@ -33,7 +33,7 @@ const koInput = document.getElementById('ko-input');
 const enInput = document.getElementById('en-input');
 const doneBtn = document.getElementById('done-btn');
 const addBackBtn = document.getElementById('add-back-btn');
-addMsg = document.getElementById('add-msg');
+const addMsg = document.getElementById('add-msg');
 
 const cardList = document.getElementById('card-list');
 
@@ -132,7 +132,7 @@ async function addNewCard() {
   showRandomCard();
   addMsg.textContent = `"${koValue}" word added ✓`;
 setTimeout(() => { addMsg.textContent = ""; }, 1500);
-
+}
 
 async function deleteCard(cardId) {
   await deleteDoc(doc(db, "cards", cardId));
